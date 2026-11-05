@@ -21,9 +21,7 @@ case "$ARCH" in
 esac
 
 BASE_URL="https://antigravity.google"
-link=$(curl -fsSL --compressed "$BASE_URL/download" \
-    | grep -oE "https://[^\"[:space:]]+/linux-${farch}/Antigravity%20IDE\\.tar\\.gz" \
-    | head -n 1)
+link=$(curl -fsSL --compressed "$BASE_URL/download" | grep -oP "https://edgedl[.]me[.]gvt1[.]com/edgedl/release2/j0qc3/antigravity/stable/[0-9]+[.][0-9]+[.][0-9]+-[0-9]+/linux-${farch}/Antigravity%20IDE[.]tar[.]gz" | head -n 1)
 
 curl -sSfL --retry 30 --retry-connrefused "$link" -o /tmp/temp.tar.gz
 echo "$(echo "$link" | grep -oP 'stable/\K[0-9]+\.[0-9]+\.[0-9]+')" > ~/version
